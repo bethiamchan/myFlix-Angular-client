@@ -16,7 +16,8 @@ const apiUrl = 'https://bchanmyflix.herokuapp.com/';
   providedIn: 'root',
 })
 export class UserRegistrationService {
-  // Inject the HttpClient module to the constructor params, which will provide HttpClient to the entire class, making it available via this.http
+  // Inject the HttpClient module to the constructor params,
+  // which will provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) {}
 
   // Making the API call for the user registration endpoint
@@ -44,7 +45,8 @@ export class UserRegistrationService {
   providedIn: 'root',
 })
 export class UserLoginService {
-  // Inject the HttpClient module to the constructor params, which will provide HttpClient to the entire class, making it available via this.http
+  // Inject the HttpClient module to the constructor params,
+  // which will provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) {}
 
   // Making the API call for the login endpoint
@@ -72,7 +74,8 @@ export class UserLoginService {
   providedIn: 'root',
 })
 export class GetAllMovies {
-  // Inject the HttpClient module to the constructor params, which will provide HttpClient to the entire class, making it available via this.http
+  // Inject the HttpClient module to the constructor params,
+  // which will provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) {}
 
   // Making the API call for the all movies endpoint
@@ -110,7 +113,8 @@ export class GetAllMovies {
   providedIn: 'root',
 })
 export class GetOneMovie {
-  // Inject the HttpClient module to the constructor params, which will provide HttpClient to the entire class, making it available via this.http
+  // Inject the HttpClient module to the constructor params,
+  // which will provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) {}
 
   // Making the API call for the movie by title endpoint
@@ -148,7 +152,8 @@ export class GetOneMovie {
   providedIn: 'root',
 })
 export class GetDirector {
-  // Inject the HttpClient module to the constructor params, which will provide HttpClient to the entire class, making it available via this.http
+  // Inject the HttpClient module to the constructor params,
+  // which will provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) {}
 
   // Making the API call for the director endpoint
@@ -186,7 +191,8 @@ export class GetDirector {
   providedIn: 'root',
 })
 export class GetGenre {
-  // Inject the HttpClient module to the constructor params, which will provide HttpClient to the entire class, making it available via this.http
+  // Inject the HttpClient module to the constructor params,
+  // which will provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) {}
 
   // Making the API call for the genre endpoint
@@ -224,7 +230,8 @@ export class GetGenre {
   providedIn: 'root',
 })
 export class GetUser {
-  // Inject the HttpClient module to the constructor params, which will provide HttpClient to the entire class, making it available via this.http
+  // Inject the HttpClient module to the constructor params,
+  // which will provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) {}
 
   // Making the API call for the user endpoint
@@ -262,7 +269,8 @@ export class GetUser {
   providedIn: 'root',
 })
 export class GetFavoriteMovies {
-  // Inject the HttpClient module to the constructor params, which will provide HttpClient to the entire class, making it available via this.http
+  // Inject the HttpClient module to the constructor params,
+  // which will provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) {}
 
   // Making the API call for the add favorite movie endpoint
@@ -300,7 +308,8 @@ export class GetFavoriteMovies {
   providedIn: 'root',
 })
 export class AddFavoriteMovie {
-  // Inject the HttpClient module to the constructor params, which will provide HttpClient to the entire class, making it available via this.http
+  // Inject the HttpClient module to the constructor params,
+  // which will provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) {}
 
   // Making the API call for the user favorites endpoint
@@ -338,7 +347,8 @@ export class AddFavoriteMovie {
   providedIn: 'root',
 })
 export class EditUser {
-  // Inject the HttpClient module to the constructor params, which will provide HttpClient to the entire class, making it available via this.http
+  // Inject the HttpClient module to the constructor params,
+  // which will provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) {}
 
   // Making the API call for the edit user endpoint
@@ -376,7 +386,8 @@ export class EditUser {
   providedIn: 'root',
 })
 export class DeleteUser {
-  // Inject the HttpClient module to the constructor params, which will provide HttpClient to the entire class, making it available via this.http
+  // Inject the HttpClient module to the constructor params,
+  // which will provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) {}
 
   // Making the API call for the delete user endpoint
@@ -414,7 +425,8 @@ export class DeleteUser {
   providedIn: 'root',
 })
 export class DeleteFavoriteMovie {
-  // Inject the HttpClient module to the constructor params, which will provide HttpClient to the entire class, making it available via this.http
+  // Inject the HttpClient module to the constructor params,
+  // which will provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) {}
 
   // Making the API call for the delete favorite movie endpoint
