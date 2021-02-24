@@ -1,0 +1,51 @@
+<app-nav-bar></app-nav-bar>
+<div class="container">
+  <mat-card *ngFor="let movie of movies; let i = index" class="card">
+    <mat-icon
+      (click)="deleteFavoriteMovie(movie._id)"
+      *ngIf="this.favoriteMoviesIDs.includes(movie._id)"
+      >favorite
+    </mat-icon>
+    <mat-icon
+      (click)="addToFavorites(movie._id, movie.Title)"
+      *ngIf="!this.favoriteMoviesIDs.includes(movie._id)"
+      >favorite_border
+    </mat-icon>
+    <mat-card-header class="card-header">
+      <mat-card-title class="card-title">{{ movie.Title }}</mat-card-title>
+    </mat-card-header>
+    <img
+      src="{{ movie.ImagePath }}"
+      alt="{{ movie.Title }}"
+      class="card-image"
+    />
+    <mat-card-actions class="buttons">
+      <button
+        mat-raised-button
+        (click)="
+          openDetailsDialog(movie.Description, movie.ImagePath, movie.Title)
+        "
+      >
+        Description
+      </button>
+      <button
+        mat-raised-button
+        (click)="openGenreDialog(movie.Genre.Name, movie.Genre.Description)"
+      >
+        Genre
+      </button>
+      <button
+        mat-raised-button
+        (click)="
+          openDirectorDialog(
+            movie.Director.Name,
+            movie.Director.Bio,
+            movie.Director.Birth
+          )
+        "
+      >
+        Director
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

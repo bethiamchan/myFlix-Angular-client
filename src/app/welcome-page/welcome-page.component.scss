@@ -1,0 +1,27 @@
+.main-page {
+  position: relative;
+  text-align: center;
+}
+
+.container > h1 {
+  color: #3765c2;
+  font-size: 28px;
+  font-weight: 600;
+  margin-top: 20px;
+}
+
+.welcome-buttons > button {
+  font-size: 16px;
+  color: black;
+  background-color: #dbca74;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 10px;
+  transition: 0.3s;
+  text-align: center;
+}
+
+.welcome-buttons > button:hover {
+  color: white;
+  background-color: #3765c2;
+}
