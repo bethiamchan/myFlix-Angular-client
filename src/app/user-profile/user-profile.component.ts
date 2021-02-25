@@ -49,8 +49,6 @@ export class UserProfileComponent implements OnInit {
     if (user) {
       this.fetchApiDataUser.getUser(user).subscribe((resp: any) => {
         this.favoriteMoviesIDs = resp.FavoriteMovies;
-        // console.log('Favorite Movie IDs: ' + this.favoriteMoviesIDs);
-        // console.log(this.favoriteMoviesIDs.length);
         return this.favoriteMoviesIDs;
       });
     }
@@ -66,7 +64,6 @@ export class UserProfileComponent implements OnInit {
         if (this.favoriteMoviesIDs.includes(movie._id))
           this.favoriteMovies.push(movie);
       });
-      // console.log(this.favoriteMovies);
       return this.favoriteMovies;
     });
   }
@@ -75,7 +72,7 @@ export class UserProfileComponent implements OnInit {
     this.fetchApiDataDeleteFavorite
       .deleteFavoriteMovie(id)
       .subscribe((resp: any) => {
-        // console.log(resp);
+        console.log(resp);
         window.location.reload();
       });
   }
@@ -83,14 +80,13 @@ export class UserProfileComponent implements OnInit {
   editUser(): void {
     this.fetchApiData.editUser(this.userData).subscribe(
       (result) => {
-        // console.log(result);
+        console.log(result);
         this.snackbar.open('Your profile has been updated.', 'OK', {
           duration: 3000,
           verticalPosition: 'top',
         });
       },
       (result) => {
-        // console.log(result);
         this.snackbar.open(result, 'OK', {
           duration: 3000,
           verticalPosition: 'top',

@@ -3,12 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 // Brings in API calls
-import {
-  GetAllMovies,
-  AddFavoriteMovie,
-  GetUser,
-  DeleteFavoriteMovie,
-} from '../fetch-api-data.service';
+import { GetAllMovies, AddFavoriteMovie } from '../fetch-api-data.service';
 
 import { MovieDetailsComponent } from '../movie-details/movie-details.component';
 import { MovieGenreComponent } from '../movie-genre/movie-genre.component';
@@ -26,49 +21,32 @@ export class MovieCardComponent implements OnInit {
   constructor(
     public fetchApiData: GetAllMovies,
     public fetchApiDataFavortie: AddFavoriteMovie,
-    public fetchApiDataUser: GetUser,
-    public fetchApiDataDeleteFavorite: DeleteFavoriteMovie,
     public dialog: MatDialog,
     public snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
     this.getMovies();
-    this.getFavoriteMovies();
   }
 
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
-      // console.log(this.movies);
       return this.movies;
     });
   }
 
   addToFavorites(id: string, Title: string): void {
     this.fetchApiDataFavortie.addFavoriteMovie(id).subscribe((resp: any) => {
-      // console.log(resp);
       this.snackBar.open(`${Title} has been added to your favorites.`, 'OK', {
         duration: 3000,
         verticalPosition: 'top',
       });
     });
 
-    const user = localStorage.getItem('user');
-    if (user) {
-      this.fetchApiDataUser.getUser(user).subscribe((resp: any) => {
-        this.favoriteMoviesIDs = resp.FavoriteMovies;
-        // console.log('Favorite Movie IDs: ' + this.favoriteMoviesIDs);
-        // console.log(this.favoriteMoviesIDs.length);
-        // localStorage.setItem('favorites', resp.FavoriteMovies);
-        return this.favoriteMoviesIDs;
-      });
-    }
     setTimeout(() => {
       this.getMovies();
     }, 100);
-
-    window.location.reload();
   }
 
   openDetailsDialog(Description: string, Image: string, Title: string): void {
@@ -93,30 +71,5 @@ export class MovieCardComponent implements OnInit {
       width: '400px',
       height: '400px',
     });
-  }
-
-  getFavoriteMovies(): void {
-    const user = localStorage.getItem('user');
-    if (user) {
-      this.fetchApiDataUser.getUser(user).subscribe((resp: any) => {
-        this.favoriteMoviesIDs = resp.FavoriteMovies;
-        // console.log('Favorite Movie IDs: ' + this.favoriteMoviesIDs);
-        // console.log(this.favoriteMoviesIDs.length);
-        // localStorage.setItem('favorites', resp.FavoriteMovies);
-        return this.favoriteMoviesIDs;
-      });
-    }
-    setTimeout(() => {
-      this.getMovies();
-    }, 100);
-  }
-
-  deleteFavoriteMovie(id: string): void {
-    this.fetchApiDataDeleteFavorite
-      .deleteFavoriteMovie(id)
-      .subscribe((resp: any) => {
-        // console.log(resp);
-        window.location.reload();
-      });
   }
 }

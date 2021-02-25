@@ -16,12 +16,12 @@
   top: 4px;
   right: 4px;
   color: #cc0000;
-  transition: all 0.3s ease-in-out;
+  transition: 0.3s;
 }
 
 .card > mat-icon:hover {
   cursor: pointer;
-  transform: scaleX(1.3) scaleY(1.3);
+  transform: scaleX(1.2) scaleY(1.2);
 }
 
 .card-header {
