@@ -11,7 +11,7 @@
   box-shadow: 0px 0px 5px #dbca74;
 }
 
-.card > mat-icon {
+.card > .favorite-movie > mat-icon {
   position: absolute;
   top: 4px;
   right: 4px;
@@ -19,7 +19,20 @@
   transition: 0.3s;
 }
 
-.card > mat-icon:hover {
+.card > .favorite-movie > mat-icon:hover {
+  cursor: pointer;
+  transform: scaleX(.8) scaleY(.8);
+}
+
+.card > .select-favorite > mat-icon {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  color: #cc0000;
+  transition: 0.3s;
+}
+
+.card > .select-favorite > mat-icon:hover {
   cursor: pointer;
   transform: scaleX(1.2) scaleY(1.2);
 }
