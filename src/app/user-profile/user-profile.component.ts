@@ -4,7 +4,6 @@ import { MatDialog } from '@angular/material/dialog';
 // Used to display notifications back to the user
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { Router } from '@angular/router';
 import {
   EditUser,
   GetAllMovies,
@@ -36,8 +35,7 @@ export class UserProfileComponent implements OnInit {
     public fetchApiDataDeleteUser: DeleteUser,
     public fetchApiDataDeleteFavorite: DeleteFavoriteMovie,
     public dialog: MatDialog,
-    public snackbar: MatSnackBar,
-    private router: Router
+    public snackbar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -49,6 +47,14 @@ export class UserProfileComponent implements OnInit {
     if (user) {
       this.fetchApiDataUser.getUser(user).subscribe((resp: any) => {
         this.favoriteMoviesIDs = resp.FavoriteMovies;
+
+        if (this.favoriteMoviesIDs.length === 0) {
+          let noFavorites = document.querySelector(
+            '.no-favorites'
+          ) as HTMLDivElement;
+          noFavorites.innerHTML = "You don't have any favorite movies!";
+        }
+
         return this.favoriteMoviesIDs;
       });
     }
@@ -56,7 +62,6 @@ export class UserProfileComponent implements OnInit {
       this.getMovies();
     }, 100);
   }
-
   getMovies(): void {
     this.fetchApiDataAllMovies.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
@@ -68,12 +73,27 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
-  deleteFavoriteMovie(id: string): void {
+  deleteFavoriteMovie(id: string, Title: string, i: number): void {
     this.fetchApiDataDeleteFavorite
       .deleteFavoriteMovie(id)
       .subscribe((resp: any) => {
+        this.snackbar.open(
+          `${Title} has been removed from your favorites.`,
+          'OK',
+          {
+            duration: 3000,
+            verticalPosition: 'top',
+          }
+        );
         console.log(resp);
-        window.location.reload();
+
+        let cards = document.querySelectorAll('.card');
+        let tempCards = Array.from(cards);
+
+        tempCards[i].classList.remove('active');
+        tempCards[i].classList.add('delete');
+
+        this.checkNoFavorites();
       });
   }
 
@@ -117,5 +137,16 @@ export class UserProfileComponent implements OnInit {
       width: '400px',
       height: '400px',
     });
+  }
+
+  checkFavorites(favoriteMoviesIDs: any): void {
+    return favoriteMoviesIDs.length;
+  }
+
+  checkNoFavorites() {
+    let container = document.querySelector('.container') as HTMLDivElement;
+    let noFavorites = document.querySelector('.no-favorites') as HTMLDivElement;
+    if (container.querySelectorAll('.active').length < 1)
+      noFavorites.innerHTML = "You don't have any favorite movies!";
   }
 }

@@ -59,12 +59,15 @@
   </mat-card>
 
   <h1 class="favorite-movies-heading">Your Favorite Movies</h1>
-  <div *ngIf="this.favoriteMoviesIDs.length === 0" class="no-favorites">
-    <p>You don't have any favorite movies yet!</p>
-  </div>
+  <div class="no-favorites"></div>
   <div class="container">
-    <mat-card *ngFor="let movie of favoriteMovies; let i = index" class="card">
-      <mat-icon (click)="deleteFavoriteMovie(movie._id)"> favorite </mat-icon>
+    <mat-card
+      *ngFor="let movie of favoriteMovies; let i = index"
+      class="card active"
+    >
+      <mat-icon (click)="deleteFavoriteMovie(movie._id, movie.Title, i)">
+        favorite
+      </mat-icon>
 
       <mat-card-header class="card-header">
         <mat-card-title class="card-title">{{ movie.Title }}</mat-card-title>
