@@ -21,7 +21,7 @@ This project is an Angular application that allows users to get information abou
 
 # Technologies
 * Requires Node.js and npm
-* Code written in Angular
+* Code written with Angular framework in TypeScript
 * Designed using Angular Material
 * Documented using Typedoc
 
