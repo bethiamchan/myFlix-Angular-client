@@ -28,7 +28,12 @@ export class UserLoginFormComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  // Sends the form inputs to the backend
+  /**
+   * Function that
+   * * checks user login credientials against the server
+   * * sends back a token if credentials are valid
+   * * stores user and token in localStorage for later use
+   */
   userLogin(): void {
     this.fetchApiData.userLogin(this.userData).subscribe(
       (response) => {

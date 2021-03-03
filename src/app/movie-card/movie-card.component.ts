@@ -33,10 +33,18 @@ export class MovieCardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    /**
+     * Call functions on page load to retrieve all movies from database
+     * and a list of user's favorite movies
+     */
     this.getMovies();
     this.getFavoriteMovies();
   }
 
+  /**
+   * Function that retrieves list of all movies from database
+   * @returns movies
+   */
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
@@ -44,6 +52,11 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /**
+   * Function that adds movie to user's list of favorites
+   * @param id type: number - Movie ID
+   * @param Title type: string - Movie Title
+   */
   addToFavorites(id: string, Title: string): void {
     this.fetchApiDataFavortie.addFavoriteMovie(id).subscribe((resp: any) => {
       this.snackBar.open(`${Title} has been added to your favorites.`, 'OK', {
@@ -60,6 +73,12 @@ export class MovieCardComponent implements OnInit {
     }, 100);
   }
 
+  /**
+   * Function to open dialog showing movie details
+   * @param Description type: string - Movie description
+   * @param Image type: string - Path to movie image
+   * @param Title type: string - Movie title
+   */
   openDetailsDialog(Description: string, Image: string, Title: string): void {
     this.dialog.open(MovieDetailsComponent, {
       data: { Description, Image, Title },
@@ -68,6 +87,11 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /**
+   * Function to open dialog showing genre details
+   * @param Name type: string - Name of genre
+   * @param Description type: string - Description of genre
+   */
   openGenreDialog(Name: string, Description: string): void {
     this.dialog.open(MovieGenreComponent, {
       data: { Name, Description },
@@ -76,6 +100,12 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /**
+   * Function to open dialog showing director details
+   * @param Name type: string - Name of director
+   * @param Bio type: string - Director bio
+   * @param Birth type: string - Year director was born
+   */
   openDirectorDialog(Name: string, Bio: string, Birth: string): void {
     this.dialog.open(MovieDirectorComponent, {
       data: { Name, Bio, Birth },
@@ -84,6 +114,10 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /**
+   * Function to get user's favorite movies
+   * @returns favoriteMovieIDs - IDs of user's favorite movies
+   */
   getFavoriteMovies(): void {
     const user = localStorage.getItem('user');
     if (user) {
@@ -97,6 +131,11 @@ export class MovieCardComponent implements OnInit {
     }, 100);
   }
 
+  /**
+   * Function to delete a movie from user's list of favorites
+   * @param id type: string - ID of movie to be deleted from favorites
+   * @param Title type: string - Title of movie to be deleted from favorites
+   */
   deleteFavoriteMovie(id: string, Title: string): void {
     this.fetchApiDataDeleteFavorite
       .deleteFavoriteMovie(id)
