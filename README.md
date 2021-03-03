@@ -3,7 +3,6 @@ This project is an Angular application that allows users to get information abou
 
 ### [The application is deployed here.](https://bethiamchan.github.io/myFlix-Angular-client/)
 <br/>
-<br/>
 
 # Screenshots
 ![Welcome screen](src/assets/myFlix-welcome.jpg)
@@ -11,7 +10,6 @@ This project is an Angular application that allows users to get information abou
 ![Main view with all movies](src/assets/myFlix-mainView.jpg)
 
 ![Profile view](src/assets/myFlix-profile.jpg)
-<br/>
 <br/>
 
 # Features
@@ -24,14 +22,12 @@ This project is an Angular application that allows users to get information abou
 * In this main view, users can add and remove movies from their list of favorites.
 * Users can also view their profile where they can see their favorite movies, remove movies from their favorites, and edit their profile details.
 <br/>
-<br/>
 
 # Technologies
 * Requires Node.js and npm
 * Code written in Angular
 * Designed using Angular Material
 * Documented using Typedoc
-<br/>
 <br/>
 
 # Development Server
